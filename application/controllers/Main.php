@@ -1,32 +1,12 @@
 <?php
-/**
- * Main Controller of E-Bingo
- */
+use JasperPHP\JasperPHP as JasperPHP;
+
 class Main extends CI_Controller
 {
 	
 	function __construct()
 	{
 		parent::__construct();
-	}
-
-	public function index_()
-	{
-		$num = str_pad(rand(1, 75), 2, '0', STR_PAD_LEFT) ;
-		// echo $num.'<br>';
-		if ($num >= 1 && $num <= 15) {
-			echo 'B '.$num;
-		} else if ($num >= 16 && $num <= 30) {
-			echo 'I '.$num;
-		}
-		else if ($num >= 31 && $num <= 45) {
-			echo 'N '.$num;
-		}
-		else if ($num >= 46 && $num <= 60) {
-			echo 'G '.$num;
-		} else {
-			echo 'O '.$num;
-		}		
 	}
 
 	public function index()
@@ -52,7 +32,15 @@ class Main extends CI_Controller
 		echo json_encode($this->result_model->get_results());
 	}
 
-	public function test()
+	public function generateResult($session)
+	{
+		$jasper = new JasperPHP;
+		$this->load->helper('path');
+
+		$jasper->compile('report/report1.jrxml')->execute();
+	}
+
+	public function fibonacci()
 	{
 		$max = 10;		
 		$tmp = 0;

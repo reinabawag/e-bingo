@@ -9,7 +9,7 @@ class result_model extends CI_Model
 		return $this->db->insert('result', ['session' => $session, 'number' => $result]);
 	}
 
-	public function get_results()
+	public function get_results($session)
 	{
 		$this->load->database();
 		$query = $this->db->query(
@@ -20,7 +20,7 @@ class result_model extends CI_Model
 			CASE WHEN number BETWEEN '31' AND '45' THEN number  END N,
 			CASE WHEN number BETWEEN '46' AND '60' THEN number  END G,
 			CASE WHEN number BETWEEN '61' AND '75' THEN number  END O
-			FROM `result` WHERE session = 'test6'"
+			FROM `result` WHERE session = '$session'"
 		);
 
 		return $query->result_array();

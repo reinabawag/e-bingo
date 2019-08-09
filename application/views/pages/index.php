@@ -48,10 +48,15 @@
 		  border-radius: 50%;
 		  display: inline-block;
 		}
+
+		body {
+			background: url('<?php echo base_url('resources/awc_bg_2.png') ?>');
+			background-repeat: no-repeat;
+		}
 	</style>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid" style="">
 		<div class="row justify-content-center">
 			<div class="col-4">
 				<img src="<?php echo base_url('resources/listing_bingo_header.jpg') ?>" class="img-fluid" alt="Responsive image" id="img-shake">
@@ -61,16 +66,16 @@
 			<div class="col-3">
 				<div class="card bg-light">
 				  <div class="card-header">Results</div>
-				    <div class="card-body">
-				      <h5 class="card-title">B</h5>
+				    <div class="card-body" id="result1">
+				      <h5 class="card-title"><strong>B</strong></h5>
 				      <p class="card-text" id="b"></p>
-				      <h5 class="card-title">I</h5>
+				      <h5 class="card-title"><strong>I</strong></h5>
 				      <p class="card-text" id="i"></p>
-				      <h5 class="card-title">N</h5>
+				      <h5 class="card-title"><strong>N</strong></h5>
 				      <p class="card-text" id="n"></p>
-				      <h5 class="card-title">G</h5>
+				      <h5 class="card-title"><strong>G</strong></h5>
 				      <p class="card-text" id="g"></p>
-				      <h5 class="card-title">O</h5>
+				      <h5 class="card-title"><strong>O</strong></h5>
 				      <p class="card-text" id="o"></p>
 				    </div>
 				</div>
@@ -95,7 +100,7 @@
 				      	<button type="button" class="btn btn-info btn-sm btn-block" onclick="location.reload();">New Session</button>&nbsp;Session No. <span id="session"><?php echo time() ?></span>
 				      </p>
 				      <p class="card-text">
-				      	<button type="button" class="btn btn-info btn-sm btn-block">Generate Report</button>
+				      	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">Show Results</button>
 				      </p>
 				      <hr>
 				      <h5 class="card-title">Draw</h5>
@@ -106,6 +111,56 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Bingo Modal</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="card bg-light">
+	          <div class="card-header">Results</div>
+	            <div class="card-body" id="modal1">
+	              <h5 class="card-title"><strong>B</strong></h5>
+	              <p class="card-text" id="b"></p>
+	              <h5 class="card-title"><strong>I</strong></h5>
+	              <p class="card-text" id="i"></p>
+	              <h5 class="card-title"><strong>N</strong></h5>
+	              <p class="card-text" id="n"></p>
+	              <h5 class="card-title"><strong>G</strong></h5>
+	              <p class="card-text" id="g"></p>
+	              <h5 class="card-title"><strong>O</strong></h5>
+	              <p class="card-text" id="o"></p>
+	            </div>
+	        </div>
+	        <br>
+	        <div class="card bg-light">
+	          <div class="card-header">Uncalled Number</div>
+	            <div class="card-body" id="modal2">
+	              <h5 class="card-title"><strong>B</strong></h5>
+	              <p class="card-text" id="b"></p>
+	              <h5 class="card-title"><strong>I</strong></h5>
+	              <p class="card-text" id="i"></p>
+	              <h5 class="card-title"><strong>N</strong></h5>
+	              <p class="card-text" id="n"></p>
+	              <h5 class="card-title"><strong>G</strong></h5>
+	              <p class="card-text" id="g"></p>
+	              <h5 class="card-title"><strong>O</strong></h5>
+	              <p class="card-text" id="o"></p>
+	            </div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -120,56 +175,15 @@
 				bingo.push(i);
 			}			
 
+			write_result_modal_3();
+
 			status = 0;
 			_number = 0;
-
-			// $('body').keyup(function(e) {
-			// 	if (e.keyCode == 13) {
-			// 		if (status == 0) {
-			// 			status = 1;
-			// 			$('#img-shake').addClass('animate');
-			// 			$('#ball_count').show();
-
-			// 			roulette = setInterval(function(){							
-			// 				random = Math.floor(Math.random() * Math.floor(bingo.length));
-			// 				number = bingo[random];
-
-			// 				if (number <= 15) {
-			// 					letter = 'B';
-			// 				} else if ((number >15) && (number <=30)) {
-			// 					letter = 'I';
-			// 				} else if ((number >30) && (number <=45)) {
-			// 					letter = 'N';
-			// 				} else if ((number >45) && (number <=60)) {
-			// 					letter = 'G'
-			// 				} else {
-			// 					letter = 'O';
-			// 				}
-			// 				_number = random;
-			// 				$("#result").html(letter + '&nbsp;<span id="res"></span>');
-			// 				$('#res').hide();
-			// 			}, 100);
-
-			// 		} else {						 			
-			// 			setTimeout(function(){
-			// 				status = 0;
-			// 				number = bingo[_number];
-			// 				bingo.splice(_number, 1);
-			// 				clearInterval(roulette);
-			// 				set_result(number);							
-							
-			// 				$('#img-shake').removeClass('animate');
-			// 			}, 1000);
-
-			// 			setTimeout(function() { 
-			// 				$('#res').fadeIn();
-			// 			}, 2000);
-			// 		}
-			// 	}			
-			// });
+			session = $('#session').text();
 
 			$('button#draw').click(function() {
 				if (bingo.length == 0) {
+					$("#result").text('Finished');
 					return false;
 				}
 
@@ -199,7 +213,7 @@
 						_number = random;
 						$("#result").html(letter + '&nbsp;<span id="res"></span>');
 						$('#res').hide();
-					}, 75);
+					}, 50);
 
 				} else {					
 					$('button#draw').prop('disabled', true);
@@ -214,12 +228,12 @@
 						set_result(number);
 						
 						$('#img-shake').removeClass('animate');
-					}, 1000);
+					}, 2000);
 
 					setTimeout(function() { 
 						$('#res').fadeIn();
 						$('button#draw').prop('disabled', false);
-					}, 2000);
+					}, 4000);
 				}
 			})
 		});
@@ -228,15 +242,16 @@
 			$.ajax({
 				type: 'POST',
 			   	url: "<?php echo site_url('main/insert_result') ?>",
-			   	data: {number: number1, session: $('#session').text()},
+			   	data: {number: number1, session: session},
 			   	dataType: 'json'
 			}).done(function(data) {
 				$('#res').text(data[2]);
 				$('#ball_count').text('Remaining Draws ' + bingo.length);
 				write_result(data[2]);
+				write_result_modal(data[2]);
+				write_result_modal_3();
 
 				if (bingo.length == 0) {
-					$("#result").text('Finished');
 					$('#ball_count').text('');
 				}
 			}).fail(function() {
@@ -246,17 +261,49 @@
 
 		function write_result(number1) {
 			if (number1 <= 15) {
-				$('p#b').append(number1 + ' ');
+				$('#result1 p#b').append(number1 + ' ');
 			} else if ((number1 >15) && (number1 <=30)) {
-				$('p#i').append(number1 + ' ');
+				$('#result1 p#i').append(number1 + ' ');
 			} else if ((number1 >30) && (number1 <=45)) {
-				$('p#n').append(number1 + ' ');
+				$('#result1 p#n').append(number1 + ' ');
 			} else if ((number1 >45) && (number1 <=60)) {
-				$('p#g').append(number1 + ' ');
+				$('#result1 p#g').append(number1 + ' ');
 			} else {
-				$('p#o').append(number1 + ' ');
+				$('#result1 p#o').append(number1 + ' ');
 			}
-		}
+		};
+
+		function write_result_modal(number1) {
+			if (number1 <= 15) {
+				$('#modal1 p#b').append(number1 + ' ');
+			} else if ((number1 >15) && (number1 <=30)) {
+				$('#modal1 p#i').append(number1 + ' ');
+			} else if ((number1 >30) && (number1 <=45)) {
+				$('#modal1 p#n').append(number1 + ' ');
+			} else if ((number1 >45) && (number1 <=60)) {
+				$('#modal1 p#g').append(number1 + ' ');
+			} else {
+				$('#modal1 p#o').append(number1 + ' ');
+			}
+		};
+
+		function write_result_modal_3() {
+			$('#modal2 p').empty();
+
+			$.each(bingo, function(index, elem) {
+				if (elem <= 15) {
+					$('#modal2 p#b').append(elem + ' ');
+				} else if ((elem >15) && (elem <=30)) {
+					$('#modal2 p#i').append(elem + ' ');
+				} else if ((elem >30) && (elem <=45)) {
+					$('#modal2 p#n').append(elem + ' ');
+				} else if ((elem >45) && (elem <=60)) {
+					$('#modal2 p#g').append(elem + ' ');
+				} else {
+					$('#modal2 p#o').append(elem + ' ');
+				}
+			});
+		};
 	</script>
 </body>
 </html>
