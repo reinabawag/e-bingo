@@ -4,12 +4,20 @@
 	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>E-BINGO</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>E-RAFFLE</title>
+	<?php echo link_tag('resources/css/bootstrap.min.css') ?>
 
 
 	<style>
-		@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+		/* latin */
+		@font-face {
+		  font-family: 'Luckiest Guy';
+		  font-style: normal;
+		  font-weight: 400;
+		  font-display: swap;
+		  src: local('Luckiest Guy Regular'), local('LuckiestGuy-Regular'), url('<?php echo base_url('resources/_gP_1RrxsjcxVyin9l9n_j2hTd52_2.woff2') ?>') format('woff2');
+		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
 		
 		html *
 		{
@@ -49,42 +57,65 @@
 		  display: inline-block;
 		}
 
-		body {
-			background: url('<?php echo base_url('resources/awc_bg_2.png') ?>');
-			background-repeat: no-repeat;
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		}
+
+		.bg {
+		  /* The image used */
+		  background: url('<?php echo base_url('resources/AMWIRE XMAS PARTY BACKGROUND-01.jpg') ?>');
+
+		  /* Full height */
+		  height: 100%; 
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		}
+
+		.bg2 {
+		  /* The image used */
+		  background: url('<?php echo base_url('resources/awc_bg_2.png') ?>');
+
+		  /* Full height */
+		  height: 100%; 
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		}
+
+		.logo {
+			width: 50%
 		}
 	</style>
 </head>
-<body>
+<body class="bg2">
 	<div class="container-fluid" style="">
 		<div class="row justify-content-center">
-			<div class="col-4">
-				<img src="<?php echo base_url('resources/listing_bingo_header.jpg') ?>" class="img-fluid" alt="Responsive image" id="img-shake">
+			<div class="col-4" align="center">
+				<img src="<?php echo base_url('resources/ezgif.com-webp-to-png.png') ?>" class="img-fluid logo" alt="Responsive image" id="img-shake">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-3">
-				<div class="card bg-light">
+				<div class="card bg-light" style="margin-top: 20%">
 				  <div class="card-header">Results</div>
 				    <div class="card-body" id="result1">
-				      <h5 class="card-title"><strong>B</strong></h5>
-				      <p class="card-text" id="b"></p>
-				      <h5 class="card-title"><strong>I</strong></h5>
-				      <p class="card-text" id="i"></p>
-				      <h5 class="card-title"><strong>N</strong></h5>
-				      <p class="card-text" id="n"></p>
-				      <h5 class="card-title"><strong>G</strong></h5>
-				      <p class="card-text" id="g"></p>
-				      <h5 class="card-title"><strong>O</strong></h5>
-				      <p class="card-text" id="o"></p>
+				    	<ul id="o">
+				    		
+				    	</ul>
 				    </div>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="text-center">
-					<img src="<?php echo base_url('resources/48491141-bingo-or-lottery-game-background-with-balls-and-cards-.jpg') ?>" class="img-fluid" alt="Responsive image" id="bg-img">
-					<div id="draw-result" style="margin-top: -63%">
-						<h1 class="display-2" id="result" style="font-family: 'Luckiest Guy', cursive;">START</h1>
+					<!-- <img src="" class="img-fluid" alt="Image Here" id="bg-img"> -->
+					<div id="draw-result" style="margin-top: 10%">
+						<h1 class="display-4" id="result" style="font-family: 'Luckiest Guy', cursive;">START</h1>
 						<div class="ha" style="margin-top: 10%">
 						<span id="ball_count" style="font-family: 'Luckiest Guy', cursive;"></span>
 						</div>
@@ -92,15 +123,18 @@
 				</div>
 			</div>
 			<div class="col-3">
-				<div class="card bg-light">
+				<div class="card bg-light" style="margin-top: 20%">
 				  <div class="card-header">Options</div>
 				    <div class="card-body">
 				      <h5 class="card-title">Configurations</h5>
 				      <p class="card-text">
-				      	<button type="button" class="btn btn-info btn-sm btn-block" onclick="location.reload();">New Session</button>&nbsp;Session No. <span id="session"><?php echo time() ?></span>
+				      	<button type="button" class="btn btn-info btn-sm btn-block" onclick="location.reload();">New Session</button><!-- &nbsp;Session No. <span id="session"><?php echo time() ?></span> -->
 				      </p>
 				      <p class="card-text">
 				      	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">Show Results</button>
+				      </p>
+				      <p class="card-text">
+				      	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#exampleModal2">Upload Excel File</button>
 				      </p>
 				      <hr>
 				      <h5 class="card-title">Draw</h5>
@@ -118,7 +152,7 @@
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Bingo Modal</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">E-Raffle Modal</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -127,32 +161,14 @@
 	        <div class="card bg-light">
 	          <div class="card-header">Results</div>
 	            <div class="card-body" id="modal1">
-	              <h5 class="card-title"><strong>B</strong></h5>
-	              <p class="card-text" id="b"></p>
-	              <h5 class="card-title"><strong>I</strong></h5>
-	              <p class="card-text" id="i"></p>
-	              <h5 class="card-title"><strong>N</strong></h5>
-	              <p class="card-text" id="n"></p>
-	              <h5 class="card-title"><strong>G</strong></h5>
-	              <p class="card-text" id="g"></p>
-	              <h5 class="card-title"><strong>O</strong></h5>
-	              <p class="card-text" id="o"></p>
+	              <ul class="card-text" id="o"></ul>
 	            </div>
 	        </div>
 	        <br>
 	        <div class="card bg-light">
 	          <div class="card-header">Uncalled Number</div>
 	            <div class="card-body" id="modal2">
-	              <h5 class="card-title"><strong>B</strong></h5>
-	              <p class="card-text" id="b"></p>
-	              <h5 class="card-title"><strong>I</strong></h5>
-	              <p class="card-text" id="i"></p>
-	              <h5 class="card-title"><strong>N</strong></h5>
-	              <p class="card-text" id="n"></p>
-	              <h5 class="card-title"><strong>G</strong></h5>
-	              <p class="card-text" id="g"></p>
-	              <h5 class="card-title"><strong>O</strong></h5>
-	              <p class="card-text" id="o"></p>
+	              <ul id="o"></ul>
 	            </div>
 	        </div>
 	      </div>
@@ -163,23 +179,49 @@
 	  </div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Upload Excel File</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <?php echo form_open_multipart('main/upload_excel', array('id' => 'form-upload'));?>
+	        	<div class="form-group">
+	        		<label for="file">Select Excel File To Upload</label>
+	        		<input type="file" name="userfile" id="file" class="form-control" />
+	        	</div>
+	        	<div class="alert alert-info" id="upload-msg" style="display: none;"></div>
+	        	<input type="submit" value="Upload"  class="btn btn-primary" />
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script type="text/javascript" src="<?php echo base_url('resources/js/jquery-3.4.1.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('resources/js/popper.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('resources/js/bootstrap.min.js') ?>"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
-			max = 75;
-			bingo = new Array();
-			for(i = 1; i <= max; i++) {
-				bingo.push(i);
-			}			
 
-			write_result_modal_3();
+			max = 75;
+			var roulette;
+			bingo = <?php echo json_encode($employee) ?>;
+			time_rand = [2000, 3000, 4000, 5000, 6000, 7000, 8000];		
+
+			// write_result_modal_3();
 
 			status = 0;
 			_number = 0;
-			session = $('#session').text();
+			session = 'REIN';			
 
 			$('button#draw').click(function() {
 				if (bingo.length == 0) {
@@ -198,112 +240,117 @@
 					roulette = setInterval(function(){							
 						random = Math.floor(Math.random() * Math.floor(bingo.length));
 						number = bingo[random];
-
-						if (number <= 15) {
-							letter = 'B';
-						} else if ((number >15) && (number <=30)) {
-							letter = 'I';
-						} else if ((number >30) && (number <=45)) {
-							letter = 'N';
-						} else if ((number >45) && (number <=60)) {
-							letter = 'G'
-						} else {
-							letter = 'O';
-						}
 						_number = random;
-						$("#result").html(letter + '&nbsp;<span id="res"></span>');
+						$("#result").html(number + '&nbsp;<span id="res"></span>');
 						$('#res').hide();
-					}, 50);
-
-				} else {					
-					$('button#draw').prop('disabled', true);
-					$('button#draw').removeClass('btn-danger').addClass('btn-success');
-					$('button#draw').text('START');
-
-					setTimeout(function(){
-						status = 0;
-						number = bingo[_number];
-						bingo.splice(_number, 1);
-						clearInterval(roulette);
-						set_result(number);
-						
-						$('#img-shake').removeClass('animate');
-					}, 2000);
-
-					setTimeout(function() { 
-						$('#res').fadeIn();
-						$('button#draw').prop('disabled', false);
-					}, 4000);
+					}, 100);
+					_time = time_rand[Math.floor(Math.random() * Math.floor(time_rand.length))]
+					stop_raffle(_time, roulette);
 				}
-			})
+			});
+
+			$("#form-upload").on('submit',(function(e) {
+			 	e.preventDefault();
+
+				$.ajax({	
+			        url: '<?php echo site_url('main/upload_excel') ?>',
+			  		type: "POST",
+			  		data:  new FormData(this),
+			  		contentType: false,
+			        cache: false,
+			  		processData:false,
+			  		dataType: 'json',
+			  		beforeSend: function() {
+			  			$('#upload-msg').empty().show();
+			  			$('#upload-msg').text('Uploading and processing data...');
+			  		}		  	
+			  	}).then(function(data) {
+			  		if (data.status) {
+			  			$('#upload-msg').html('<strong>Success!</strong> Uploaded');
+
+			  			return $.get('<?php echo site_url('main/get_all_emp') ?>', null, null, 'json');
+			  		} else {
+			  			$('#upload-msg').html(data.error);
+			  		}
+			  		console.log(data);
+			  	}).done(function(data) {
+			  		console.log(data);
+			  		bingo = data;
+			  		write_result_modal_3();
+			  	}).fail(function(data) {
+			  		console.log(data);
+			  	})
+			}));
+
+			$('#exampleModal').on('show.bs.modal', function(e) {
+				$.get('<?php echo site_url('main/get_all_emp_true') ?>', null, null, 'json')
+				.then(function(data) {
+					$('#modal1 ul#o').empty();
+					$.each(data, function(index, elem) {
+						$('#modal1 ul#o').append('<li>' + elem + '</li>');
+					});
+
+					return $.get('<?php echo site_url('main/get_all_emp') ?>', null, null, 'json');
+				}).then(function(data) {
+					write_result_modal_3(data);
+				}).fail(function() {
+					alert('Error in propagating result set');
+				})
+
+			});
+
+			$('#exampleModal2').on('hidden.bs.modal', function(e) {
+				$('#upload-msg').hide();
+			});
 		});
 
-		function set_result(number1) {
-			$.ajax({
-				type: 'POST',
-			   	url: "<?php echo site_url('main/insert_result') ?>",
-			   	data: {number: number1, session: session},
-			   	dataType: 'json'
-			}).done(function(data) {
-				$('#res').text(data[2]);
-				$('#ball_count').text('Remaining Draws ' + bingo.length);
-				write_result(data[2]);
-				write_result_modal(data[2]);
-				write_result_modal_3();
+		function stop_raffle(time, roulette) {
+			console.log(time);
+			$('button#draw').prop('disabled', true);
+			$('button#draw').removeClass('btn-danger').addClass('btn-success');
+			$('button#draw').text('START');
 
-				if (bingo.length == 0) {
-					$('#ball_count').text('');
-				}
-			}).fail(function() {
-				alert('Error in database connection');
-			});
+			setTimeout(function(){
+				status = 0;
+				number = bingo[_number];
+				bingo.splice(_number, 1);
+				clearInterval(roulette);
+				set_result(number);	
+				$('#img-shake').removeClass('animate');
+			}, time);
+		}
+
+		function set_result(number1) {
+			$('button#draw').prop('disabled', false);
+			
+			$.post('<?php echo site_url('main/update_emp_status') ?>', {number: number1}, null, 'json')
+			.done(function(data) {
+				$('#res').fadeIn(function() {
+					write_result(number1);
+					// write_result_modal(number1);
+					// write_result_modal_3();
+				});
+			})
+			.fail(function() {
+				alert('Error Updating Employee Status');
+			})			
 		}
 
 		function write_result(number1) {
-			if (number1 <= 15) {
-				$('#result1 p#b').append(number1 + ' ');
-			} else if ((number1 >15) && (number1 <=30)) {
-				$('#result1 p#i').append(number1 + ' ');
-			} else if ((number1 >30) && (number1 <=45)) {
-				$('#result1 p#n').append(number1 + ' ');
-			} else if ((number1 >45) && (number1 <=60)) {
-				$('#result1 p#g').append(number1 + ' ');
-			} else {
-				$('#result1 p#o').append(number1 + ' ');
-			}
-		};
+			$('#result1 ul#o').append('<li>' + number1 + '</li>');
+		}
 
 		function write_result_modal(number1) {
-			if (number1 <= 15) {
-				$('#modal1 p#b').append(number1 + ' ');
-			} else if ((number1 >15) && (number1 <=30)) {
-				$('#modal1 p#i').append(number1 + ' ');
-			} else if ((number1 >30) && (number1 <=45)) {
-				$('#modal1 p#n').append(number1 + ' ');
-			} else if ((number1 >45) && (number1 <=60)) {
-				$('#modal1 p#g').append(number1 + ' ');
-			} else {
-				$('#modal1 p#o').append(number1 + ' ');
-			}
-		};
+			$('#modal1 ul#o').append('<li>' + number1 + '</li>');
+		}
 
-		function write_result_modal_3() {
-			$('#modal2 p').empty();
+		function write_result_modal_3(data) {
+			$('#modal2 ul').empty();
 
-			$.each(bingo, function(index, elem) {
-				if (elem <= 15) {
-					$('#modal2 p#b').append(elem + ' ');
-				} else if ((elem >15) && (elem <=30)) {
-					$('#modal2 p#i').append(elem + ' ');
-				} else if ((elem >30) && (elem <=45)) {
-					$('#modal2 p#n').append(elem + ' ');
-				} else if ((elem >45) && (elem <=60)) {
-					$('#modal2 p#g').append(elem + ' ');
-				} else {
-					$('#modal2 p#o').append(elem + ' ');
-				}
+			$.each(data, function(index, elem) {
+				$('#modal2 ul#o').append('<li>' + elem + '</li>');
 			});
-		};
+		}	
 	</script>
 </body>
 </html>

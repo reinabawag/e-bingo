@@ -12,7 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"cossou/jasperphp": "2.4.0"
+		"cossou/jasperphp": "2.4.0",
+		"phpoffice/phpspreadsheet": "^1.10"
 	},
 	"suggest": {
 	},
